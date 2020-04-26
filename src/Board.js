@@ -41,7 +41,7 @@ class Board extends Component {
 
 
   /** handle changing a cell: update board & determine if winner */
-
+  //passed into cell as a prop
   flipCellsAround(coord) {
     let { ncols, nrows } = this.props;
     let board = this.state.board;
@@ -71,11 +71,14 @@ class Board extends Component {
 
 
   render() {
+    //creates the board to be played 
     let tblBoard = [];
     for (let i = 0; i < this.props.nrows; i++) {
       let cellArray = [];
       for (let j = 0; j < this.props.ncols; j++) {
+        // gets the coordinate of each cell
         let coord = `${i}-${j}`;
+        //creates a cell onto the cellArray
         cellArray.push(<Cell location={coord} flipCellsAroundMe={() => this.flipCellsAround(coord)} key={coord} isLit={this.state.board[i][j]} />)
 
       }
